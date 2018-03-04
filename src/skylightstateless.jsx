@@ -6,11 +6,15 @@ import assign from './utils/assign';
 export default class SkyLightStateless extends React.Component {
 
   componentWillMount() {
-    document.addEventListener("keydown", this._handlerEsc.bind(this));
+    if (typeof document !== 'undefined') {
+      document.addEventListener("keydown", this._handlerEsc.bind(this));
+    }
   }
 
   componentWillUnmount() {
-    document.removeEventListener("keydown", this._handlerEsc.bind(this));
+    if (typeof document !== 'undefined') {
+      document.removeEventListener("keydown", this._handlerEsc.bind(this));
+    }
   }
 
   _handlerEsc(evt) {
